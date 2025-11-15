@@ -1,1 +1,36 @@
-<p>header works!</p>
+<mat-toolbar>
+
+  <span>Movies Online Store</span>
+  <span class="example-spacer"></span>
+  <!-- <button matButton routerLink="/movies" aria-label="To show movie list" routerLinkActive="active-button" [routerLinkActiveOptions]="{ exact: true }">List Movies
+  </button>
+  @if (isLoggedIn) {
+  <button matButton routerLink="add" routerLinkActive="active-button" [routerLinkActiveOptions]="{ exact: true }">
+    Add Movie
+  </button>
+
+  <button matButton routerLinkActive="active-button" (click)="logoutCurrentUser()">
+    Logout
+  </button>
+  } @else {
+  <button matButton aria-label="Login user" routerLinkActive="active-button" routerLink="login">
+    Login
+  </button>
+  } -->
+
+  <button matButton="text" aria-label="To show movie list" routerLinkActive="active-button">List Movies
+  </button>
+  <button matButton="text" aria-label="To add movie list" routerLinkActive="active-button">
+    Add Movie
+  </button>
+  <button matButton="text" aria-label="Cart user" routerLinkActive="active-button">
+    <mat-icon><span class="material-symbols-outlined">shopping_cart</span></mat-icon>
+  </button>
+  <button matButton="text" aria-label="Login user" routerLinkActive="active-button">
+    Login
+  </button>
+  <button matButton="text" aria-label="Logout user" routerLinkActive="active-button">
+    Logout
+  </button>
+
+</mat-toolbar>
