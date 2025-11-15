@@ -1,1 +1,114 @@
 <p>movie-form works!</p>
+<form class="container mat-typography" [formGroup]="formGroup" (ngSubmit)="onSubmit()" novalidate>
+
+  <!-- Título -->
+  @let title = formGroup.get('title');
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Título *</mat-label>
+    <input matInput id="title" formControlName="title" maxlength="50" placeholder="Ex.: Avatar">
+    <mat-hint align="end">
+      {{ (title?.value?.length || 0) }}/50
+    </mat-hint>
+    @if (title?.touched && title?.hasError('required')) {
+    <mat-error>O título é obrigatório.</mat-error>
+    }
+    @if (title?.touched && title?.hasError('maxlength')) {
+    <mat-error>Limite de 50 caracteres.</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Gênero -->
+  @let genre = formGroup.get('genre');
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Gênero *</mat-label>
+    <mat-select id="genre" formControlName="genre">
+      <mat-option [value]="''" disabled>Selecione um gênero</mat-option>
+      @for (g of genres; track g) {
+      <mat-option [value]="g">{{ g }}</mat-option>
+      }
+    </mat-select>
+    @if (genre?.touched && genre?.hasError('required')) {
+    <mat-error>O gênero é obrigatório.</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Plataforma -->
+  @let platform = formGroup.get('platform');
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Plataforma *</mat-label>
+    <mat-select id="platform" formControlName="platform">
+      <mat-option [value]="''" disabled>Selecione uma plataforma</mat-option>
+      @for (p of platforms; track p) {
+      <mat-option [value]="p">{{ p }}</mat-option>
+      }
+    </mat-select>
+    @if (platform?.touched && platform?.hasError('required')) {
+    <mat-error>A plataforma é obrigatória.</mat-error>
+    }
+  </mat-form-field>
+
+  <div class="file-field">
+    <label class="block mb-1">Poster image</label>
+
+    <input type="file" #fileInput accept="image/*" style="display: none;" (change)="onFileSelected($event)" />
+    <button mat-raised-button color="primary" (click)="fileInput.click()" type="button">
+      Escolher arquivo
+    </button>
+
+    @if (fileError) {
+    <mat-error>{{ fileError }}</mat-error>
+    }
+
+    @if (imagePreview) {
+    <div class="preview">
+      <img [src]="imagePreview" alt="Preview" style="max-width: 240px; margin-top: 8px;" />
+    </div>
+    }
+  </div>
+
+  <!-- Preço (opcional, min 0.01) -->
+  @let price = formGroup.get('price');
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Preço (R$)</mat-label>
+    <input matInput id="price" type="number" formControlName="price" min="0.01" step="0.01" placeholder="Ex.: 199.90">
+    @if (price?.touched && price?.hasError('min')) {
+    <mat-error>O preço mínimo é R$ 0,01.</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Descrição (opcional) -->
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Descrição</mat-label>
+    <textarea matInput id="description" formControlName="description" rows="4" placeholder="Resumo do jogo, recursos, desenvolvedora, etc."></textarea>
+  </mat-form-field>
+
+  <!-- Quantidade em estoque (opcional, min 1) -->
+  @let stock = formGroup.get('availableInStock');
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Quantidade em estoque</mat-label>
+    <input matInput id="availableInStock" type="number" formControlName="availableInStock" min="1" step="1" placeholder="Ex.: 10">
+    @if (stock?.touched && stock?.hasError('min')) {
+    <mat-error>O mínimo é 1 unidade.</mat-error>
+    }
+  </mat-form-field>
+
+  <!-- Ações -->
+  <div class="d-flex gap-2 mt-2 text-center">
+    <button mat-raised-button color="primary" type="submit" [disabled]="formGroup.invalid || formGroup.pending">
+      Salvar
+    </button>
+
+    <button mat-stroked-button type="button" (click)="formGroup.reset()">
+      Limpar
+    </button>
+  </div>
+
+  <!-- (Opcional) Preview da imagem quando houver URL válida -->
+  @let img = formGroup.get('imageLink')?.value;
+@if (img) {
+    <div class="mt-3">
+    <img [src]="img" alt="Preview da capa" style="max-width: 240px; border-radius: 8px;">
+    </div>
+}
+
+</form>
