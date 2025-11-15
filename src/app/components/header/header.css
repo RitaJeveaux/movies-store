@@ -1,0 +1,9 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.active-button {
+  background-color: gray !important;
+  color: white !important;
+}
+
