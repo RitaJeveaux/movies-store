@@ -1,0 +1,42 @@
+.movie-card {
+  width: 230px;
+  height: 500px;
+  /* Altura fixa para padronizar os cards */
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card mat-card-title {
+  /* Limita o título a 2 linhas para não quebrar o layout */
+  display: -webkit-box;
+  /* -webkit-line-clamp: 2; */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 40px;
+  /* Reserva espaço para duas linhas de título */
+}
+
+.movie-card mat-card-content {
+  flex-grow: 1;
+  /* Adiciona scroll se a descrição for muito longa, evitando que o card estique */
+  overflow: auto;
+}
+
+.movie-card img {
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Reduz o tamanho das fontes */
+.movie-card mat-card-title {
+  font-size: 1rem;
+}
+
+.movie-card mat-card-subtitle {
+  font-size: 0.7rem;
+}
+
+.movie-card mat-card-content {
+  font-size: 0.8rem;
+}
