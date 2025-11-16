@@ -1,1 +1,6 @@
-<p>delete-dialog works!</p>
+<h2 mat-dialog-title>Excluir filme</h2>
+<mat-dialog-content>Tem certeza de que deseja excluir "{{ data.title }}"?</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">Cancelar</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Excluir</button>
+</mat-dialog-actions>

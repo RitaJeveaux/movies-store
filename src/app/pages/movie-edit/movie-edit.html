@@ -1,1 +1,8 @@
-<p>movie-edit works!</p>
+<h2>Editar Filme</h2>
+@if (movie) {
+  <app-movie-form 
+    [movie]="movie" 
+    [isEditMode]="true" 
+    (save)="onSave($event)">
+  </app-movie-form>
+}
