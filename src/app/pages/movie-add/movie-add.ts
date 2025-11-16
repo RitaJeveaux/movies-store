@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MovieForm } from '../../components/movie-form/movie-form';
 
 @Component({
   selector: 'app-movie-add',
-  imports: [],
+  imports: [MovieForm],
   templateUrl: './movie-add.html',
   styleUrl: './movie-add.css',
 })

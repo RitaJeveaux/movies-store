@@ -23,8 +23,16 @@ export class MovieForm {
     "In Theaters",
     "Streaming",
     "On Demand",
-    "Comming Soon",
+    "Coming Soon",
+    "Now Playing",
+    "Pre-Order",
+    "New Releases",   
+    "Top Rated",
+    "Classics",
+    "Exclusive",  
+    "Special Edition"
   ];
+
   genres: Array<string> = [
     "Action",
     "Drama",
@@ -32,6 +40,23 @@ export class MovieForm {
     "Thriller",
     "Romance",
     "Horror",
+    "Adventure",
+    "Fantasy",
+    "Comedy",
+    "Documentary",
+    "Mystery",
+    "Animation",
+    "Biography",
+    "Crime",
+    "Family",
+    "History",
+    "Music",
+    "Musical",
+    "Sport",
+    "War",
+    "Western",
+    "Film Noir",
+    "Short Film"
   ];
   imagePreview?: string | null;
   fileError?: string | null;
@@ -79,16 +104,16 @@ export class MovieForm {
     defer(() =>
       this.file
         ? this.moviesService.uploadImage(this.file)
-        : of <{ imageUrl?: string }>({ imageUrl: undefined })
+        : of<{ imageUrl?: string }>({ imageUrl: undefined })
     ).pipe(
       switchMap
-      (({ imageUrl }) => {
-        const movieData: Movie = {
-          ...this.formGroup.value,
-          imageLink: imageUrl,
-        };
-        return this.moviesService.createOne(movieData);
-      })
+        (({ imageUrl }) => {
+          const movieData: Movie = {
+            ...this.formGroup.value,
+            imageLink: imageUrl,
+          };
+          return this.moviesService.createOne(movieData);
+        })
     ).subscribe({
       next: (movie: Movie) => {
         this.matSnackBar.open(`O filme '${movie.title}' foi criado com sucesso!`, 'Fechar', {
