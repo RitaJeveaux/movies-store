@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,8 +11,9 @@ import { MovieService } from '../../services/movie-service';
 import { DeleteDialog } from '../delete-dialog/delete-dialog';
 
 @Component({
+  standalone: true,
   selector: 'app-movie-card',
-  imports: [MatIconModule, MatButtonModule, MatCardModule, RouterModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatCardModule, RouterModule],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
@@ -19,8 +21,16 @@ export class MovieCard {
   @Input() movie!: Movie;
   @Output() deleteCard: EventEmitter<string> = new EventEmitter();
 
-  constructor(private dialog: MatDialog, private moviesService: MovieService, private snackBar: MatSnackBar) { }
 
+  constructor(private dialog: MatDialog, private moviesService: MovieService, private snackBar: MatSnackBar) { }
+  
+  // get isLoggedIn(): boolean {
+  //   return this.authService.isAuthenticated();
+  // }
+
+  // addItemToCart(movie: Movie) {
+  //   this.cartService.addItem(movie);
+  // }
 
   confirmDelete() {
     const dialogRef = this.dialog.open(DeleteDialog, {
