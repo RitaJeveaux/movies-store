@@ -1,59 +1,112 @@
-# MoviesStore
+# Movie Catalog (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+**Status:** Implemented with internationalization, Angular Material UI, and connects to the movies API from Prof. Luis Fernando Bicalho.
 
-## Development server
+## Overview
 
-To start a local development server, run:
+Movie Catalog is an Angular application to browse, search, add, edit and delete movies. The UI uses Angular Material components and supports internationalization (English and Portuguese) through JSON translation files located in `public/assets/i18n/` (`en.json`, `pt.json`). The project is intended to run locally together with the example API provided by Prof. Luis Fernando Bicalho: `https://github.com/Kirink212/api-examples` (movies-api).
 
-```bash
-ng serve
+## Technologies
+
+- Angular (version used in project)
+- Angular Material
+- RxJS
+- TypeScript
+- HTML / SCSS
+- Node.js & npm
+- The backend API: `movies-api` from Kirink212 (Professor Luis Fernando Bicalho)
+
+## Project structure (high level)
+
+```
+/public/assets/i18n/   # translation JSON files (en.json, pt.json)
+src/
+  app/
+    modules/
+    components/
+    services/
+    models/
+  assets/
+  environments/
+angular.json
+package.json
+README.md
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Internationalization (i18n)
 
-## Code scaffolding
+Translations are provided in `public/assets/i18n/en.json` and `public/assets/i18n/pt.json`. The app loads the appropriate JSON at runtime using a translation loader (for example `@ngx-translate/core` with `TranslateHttpLoader`) or a custom service that fetches `/assets/i18n/{lang}.json`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+Example usage in templates:
+```html
+<h1>{ 'HOME.WELCOME' | translate }</h1>
+<button mat-button>{ 'MOVIE.ADD' | translate }</button>
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Prerequisites
 
+- Node.js (>= 16 recommended)
+- npm (>= 8) or yarn
+- Angular CLI (optional, for development): `npm install -g @angular/cli`
+- The example backend API (clone and run locally): `https://github.com/Kirink212/api-examples` (see instructions below)
+
+## How to run the project locally
+
+1. Clone this frontend repo or extract the ZIP.
+2. Install dependencies:
 ```bash
-ng generate --help
+npm install
 ```
-
-## Building
-
-To build the project run:
-
+3. Run the backend API locally:
 ```bash
-ng build
+# clone the API examples (movies-api)
+git clone https://github.com/Kirink212/api-examples.git
+cd api-examples/movies-api
+npm install
+npm run start
 ```
+The backend will run on `http://localhost:3000` (confirm the port in the API README or code). The frontend expects the API to be available locally — update `environment.ts` if the API runs on another port.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+4. Run the frontend:
 ```bash
-ng test
+ng serve --open
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+Or
 ```bash
-ng e2e
+npm start
 ```
+The app will open at `http://localhost:4200`.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Configuration
 
-## Additional Resources
+- API base URL: configured in `src/environments/environment.ts` as `apiUrl`. Set to `http://localhost:3000` when running locally with the professor's API.
+- i18n files location: `public/assets/i18n/{lang}.json`
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Scripts
+
+- `npm start` — starts the frontend dev server (maps to `ng serve`)
+- `npm run build` — builds the app for production
+- `npm test` — runs unit tests (if configured)
+- `npm run lint` — runs linter (if configured)
+
+## Notes about the backend API
+
+This frontend was built to work with the `movies-api` example provided in the referenced GitHub repository. That API exposes endpoints to list, get, create, update, and delete movies. Adjust `environment.apiUrl` if the API runs on a different host/port.
+
+## Contributing
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/name`
+3. Commit changes: `git commit -m "feat: description"`
+4. Push and open a Pull Request
+
+## License
+
+MIT
+
+
+
+## Automatic string extraction for i18n
+
+- Detectei e extraí 165 strings do código (templates e arquivos .ts). Elas foram adicionadas em `public/assets/i18n/en.json` e `pt.json` sob a chave `UI`.
+- Algumas traduções em PT são suposições e devem ser revisadas manualmente.
