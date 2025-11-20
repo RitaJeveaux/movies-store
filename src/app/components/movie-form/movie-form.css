@@ -6,3 +6,7 @@
     margin: auto;
 }
 
+.active-button:hover {
+    background-color: gray;
+    color: black;
+}

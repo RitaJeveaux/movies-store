@@ -1,4 +1,3 @@
-
 <form class="container mat-typography" [formGroup]="formGroup" (ngSubmit)="onSubmit()" novalidate>
 
   <!-- Título -->
@@ -94,19 +93,19 @@
 
   <!-- Ações -->
   <div class="d-flex gap-2 mt-2 text-center">
-    <button mat-raised-button color="primary" type="submit" [disabled]="formGroup.invalid || formGroup.pending">
+    <button mat-stroked-button color="primary" class="active-button" type="submit" [disabled]="formGroup.invalid || formGroup.pending">
       @if (isEditMode) {
-        <span>Atualizar</span>
+      <span>Atualizar</span>
       } @else {
-        <span>Salvar</span>
+      <span>Salvar</span>
       }
     </button>
 
-    <button mat-stroked-button type="button" routerLink="/">
+    <button mat-stroked-button type="button" class="active-button" routerLink="/">
       Cancelar
     </button>
 
-    <button mat-stroked-button type="button" (click)="formGroup.reset()">
+    <button mat-stroked-button type="button" class="active-button" (click)="formGroup.reset()">
       Limpar
     </button>
   </div>
