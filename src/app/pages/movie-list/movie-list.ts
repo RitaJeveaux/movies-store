@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../../models/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { MovieService } from '../../services/movie-service';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
+  standalone: true,
   selector: 'app-movie-list',
-  imports: [MovieCard],
+  imports: [MovieCard, MatProgressSpinner],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
 })

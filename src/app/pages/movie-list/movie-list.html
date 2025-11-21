@@ -1,8 +1,19 @@
 <div class="container">
+  @defer(on viewport) {
   @for (movie of movies; track movie.id) {
-  <app-movie-card [movie]="movie" />
+  <app-movie-card [movie]="movie" (deleteCard)="deleteCard($event)" />
   }
   @empty {
   <b>Nenhum filme cadastrado</b>
+  }
+  }
+  @placeholder() {
+  <b>Carregando...</b>
+  }
+  @loading (minimum 2s) {
+  <mat-spinner></mat-spinner>
+  }
+  @error {
+  <b>Erro no carregamento</b>
   }
 </div>

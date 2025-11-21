@@ -3,6 +3,12 @@
 }
 
 .active-button {
-  background-color: gray !important;
-  color: black !important;
+  background-color: gray;
+  color: black;
+}
+
+.flag img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
 }

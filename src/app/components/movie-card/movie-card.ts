@@ -1,19 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Movie } from '../../models/movie';
+import { MatIconButton } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
+import { Movie } from '../../models/movie';
 import { MatDialog } from '@angular/material/dialog';
-import { MovieService } from '../../services/movie-service';
 import { DeleteDialog } from '../delete-dialog/delete-dialog';
+import { MovieService } from '../../services/movie-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../services/auth-service';
+import { RouterLink } from '@angular/router';
+// import { CartService } from '../../services/cart.service';
 
 @Component({
-  standalone: true,
   selector: 'app-movie-card',
-  imports: [CommonModule, MatIconModule, MatButtonModule, MatCardModule, RouterModule],
+  imports: [MatCardModule, MatIcon, MatIconButton, RouterLink, CommonModule],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
@@ -21,12 +22,18 @@ export class MovieCard {
   @Input() movie!: Movie;
   @Output() deleteCard: EventEmitter<string> = new EventEmitter();
 
+  constructor(
+    private dialog: MatDialog,
+    private moviesService: MovieService,
+    // private cartService: CartService,
+    private authService: AuthService,
+    private snackBar: MatSnackBar) {
 
-  constructor(private dialog: MatDialog, private moviesService: MovieService, private snackBar: MatSnackBar) { }
-  
-  // get isLoggedIn(): boolean {
-  //   return this.authService.isAuthenticated();
-  // }
+  }
+
+  get isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
 
   // addItemToCart(movie: Movie) {
   //   this.cartService.addItem(movie);
@@ -38,6 +45,7 @@ export class MovieCard {
         title: this.movie.title
       }
     });
+
     dialogRef
       .afterClosed()
       .subscribe((confirm: boolean) => {
@@ -53,8 +61,13 @@ export class MovieCard {
 
             this.deleteCard.emit(this.movie.id);
           },
-          error: () => {
-            this.snackBar.open('Não foi possível excluir o filme.', 'Fechar', {
+          error: (err) => {
+            let msg = 'Não foi possível excluir o filme.';
+            if (err.status == 401) {
+              msg = 'Você não está autorizado para realizar a exclusão de um filme.'
+            }
+
+            this.snackBar.open(msg, 'Fechar', {
               horizontalPosition: "end",
               verticalPosition: "top",
               duration: 3000
@@ -64,4 +77,3 @@ export class MovieCard {
       })
   }
 }
-

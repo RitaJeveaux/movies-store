@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'movies', pathMatch: 'full' },
   { path: 'movies', component: MovieList },
   { path: 'add', component: MovieAdd, canActivate: [authGuard] },
-  { path: 'edit/:id', component: MovieEdit },
+  { path: 'edit/:id', component: MovieEdit, canActivate: [authGuard] },
   { path: 'login', component: Login },
   { path: 'users/add', component: UsersAdd },
   { path: '**', component: NotFound },
