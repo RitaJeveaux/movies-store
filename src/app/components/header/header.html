@@ -18,22 +18,17 @@
     Login
   </button>
   }
-  <button matButton="text" aria-label="Cart user" routerLinkActive="active-button">
-    <mat-icon><span class="material-symbols-outlined">shopping_cart</span></mat-icon>
+  <button matButton="text" aria-label="Cart user">
+    <mat-icon><span class="material-symbols-outlined flag">shopping_cart</span></mat-icon>
   </button>
-</mat-toolbar>
-<!-- 
-  <button matButton="text" aria-label="To show movie list" routerLinkActive="active-button">List Movies
+  <mat-button-toggle-group name="languages" aria-label="Choose language">
+    <mat-button-toggle class="flag" value="pt-br"><img src="assets/icons/brasil.svg" alt="pt-br" /></mat-button-toggle>
+    <mat-button-toggle class="flag" value="en"> <img src="assets/icons/estados-unidos.svg" alt="en" /></mat-button-toggle>
+  </mat-button-toggle-group>
+  <!-- <button matButton="text" class="flag">
+    <img src="assets/icons/brasil.svg" alt="pt-br" />
   </button>
-  <button matButton="text" aria-label="To add movie list" routerLinkActive="active-button">
-    Add Movie
-  </button>
-  <button matButton="text" aria-label="Cart user" routerLinkActive="active-button">
-    <mat-icon><span class="material-symbols-outlined">shopping_cart</span></mat-icon>
-  </button>
-  <button matButton="text" aria-label="Login user" routerLinkActive="active-button">
-    Login
-  </button>
-  <button matButton="text" aria-label="Logout user" routerLinkActive="active-button">
-    Logout
+  <button matButton="text" class="flag">
+    <img src="assets/icons/estados-unidos.svg" alt="en" />
   </button> -->
+</mat-toolbar>

@@ -1,18 +1,16 @@
 .movie-card {
-  width: 230px;
-  height: 550px;
   display: flex;
   flex-direction: column;
+  height: 550px;
+  width: 230px;
 }
 
 .movie-card mat-card-title {
-  /* Limita o título a 2 linhas para não quebrar o layout */
-  display: -webkit-box;
   -webkit-box-orient: vertical;
+  display: -webkit-box;
+  min-height: 40px;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 40px;
-
 }
 
 .movie-card mat-card-content {
@@ -37,6 +35,3 @@
   font-size: 0.8rem;
 }
 
-.action-button {
-  margin-left: 2.8rem;
-}
