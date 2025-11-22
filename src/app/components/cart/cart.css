@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-list {
+  flex-grow: 1;
+  /* overflow-y: auto; */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+h3 {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.list-item {
+  align-items: center;
+  display: flex;
+  font-size: 16px;
+  gap: 1rem;
+  justify-content: space-between;
+  /* overflow-x: auto; */
+}
+
+.quantity-button {
+  font-size: 1.2rem;
+}
+
+.cart-footer {
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  margin: 0 24px 0 20px;
+  text-align: center;
+}

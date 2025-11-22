@@ -31,14 +31,14 @@ export class UsersAdd {
     this.userService.addUser(user).subscribe({
       next: () => {
         this.snackBar.open('User created successfully!', 'Close', {
-          horizontalPosition: "end",
+          horizontalPosition: "center",
           verticalPosition: "top", duration: 3000
         });
         this.router.navigate(['/login']);
       },
       error: (err) => {
         this.snackBar.open(`Error creating user: ${err.message}`, 'Close', {
-          horizontalPosition: "end",
+          horizontalPosition: "center",
           verticalPosition: "top", duration: 5000
         });
       }

@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './components/footer/footer';
 import { Header } from './components/header/header';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { Cart } from './components/cart/cart';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, Header, Footer],
+  imports: [RouterOutlet, Header, Footer, MatSidenavModule, Cart],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

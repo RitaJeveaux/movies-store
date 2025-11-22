@@ -103,8 +103,19 @@ This frontend was built to work with the `movies-api` example provided in the re
 ## License
 
 MIT
+## O que ainda falta:
 
+- [ ] atualizar quantidade de movies no serve depois da compra
+- [ ] crud completo do user com restrição para edit e delete
+- [ ] criar botoes no cart para limpar o cart e para pagar(checkout)
+- [ ] formatar o display do cart - quase lá
+- [ ] implementar a tradução
+- [ ] implementar modulo de pagamentos
 
+Feedback da API
+
+- [ ] as imagens dos poster, quando edit do movie, a imagem recebe novo id e a imagem "descartada" permanece no server
+- [ ] user só tem username, email, password - não tem o role
 
 ## Automatic string extraction for i18n
 

@@ -1,10 +1,8 @@
 <mat-toolbar>
-
   <span>Movies Online Store</span>
   <span class="example-spacer"></span>
   <button matButton routerLink="/movies" aria-label="To show movie list" routerLinkActive="active-button" [routerLinkActiveOptions]="{ exact: true }">List Movies
   </button>
-
 
   @if (isLoggedIn) {
   <button matButton routerLink="add" routerLinkActive="active-button" [routerLinkActiveOptions]="{ exact: true }">
@@ -18,17 +16,14 @@
     Login
   </button>
   }
-  <button matButton="text" aria-label="Cart user">
-    <mat-icon><span class="material-symbols-outlined flag">shopping_cart</span></mat-icon>
+  <button mat-icon-button class="cart-button" (click)="drawer.toggle()" [matBadge]="cartItemsCount()" [matBadgeHidden]="cartItemsCount() === 0">
+    <div class="cart-icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </div>
+
   </button>
   <mat-button-toggle-group name="languages" aria-label="Choose language">
     <mat-button-toggle class="flag" value="pt-br"><img src="assets/icons/brasil.svg" alt="pt-br" /></mat-button-toggle>
-    <mat-button-toggle class="flag" value="en"> <img src="assets/icons/estados-unidos.svg" alt="en" /></mat-button-toggle>
+    <mat-button-toggle class="flag" value="en"><img src="assets/icons/estados-unidos.svg" alt="en" /></mat-button-toggle>
   </mat-button-toggle-group>
-  <!-- <button matButton="text" class="flag">
-    <img src="assets/icons/brasil.svg" alt="pt-br" />
-  </button>
-  <button matButton="text" class="flag">
-    <img src="assets/icons/estados-unidos.svg" alt="en" />
-  </button> -->
 </mat-toolbar>

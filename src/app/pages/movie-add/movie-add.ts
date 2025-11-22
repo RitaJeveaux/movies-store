@@ -35,7 +35,7 @@ export class MovieAdd {
     ).subscribe({
       next: (createdMovie: Movie) => {
         this.matSnackBar.open(`O filme '${createdMovie.title}' foi criado com sucesso!`, 'Fechar', {
-          horizontalPosition: 'end',
+          horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
         });
@@ -43,7 +43,7 @@ export class MovieAdd {
       },
       error: () => {
         this.matSnackBar.open('Não foi possível adicionar o filme.', 'Fechar', {
-          horizontalPosition: 'end',
+          horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
         });

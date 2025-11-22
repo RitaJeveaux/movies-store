@@ -10,7 +10,7 @@ import { MovieService } from '../../services/movie-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth-service';
 import { RouterLink } from '@angular/router';
-// import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/cart-service';
 
 @Component({
   selector: 'app-movie-card',
@@ -25,7 +25,7 @@ export class MovieCard {
   constructor(
     private dialog: MatDialog,
     private moviesService: MovieService,
-    // private cartService: CartService,
+    private cartService: CartService,
     private authService: AuthService,
     private snackBar: MatSnackBar) {
 
@@ -35,9 +35,14 @@ export class MovieCard {
     return this.authService.isAuthenticated();
   }
 
-  // addItemToCart(movie: Movie) {
-  //   this.cartService.addItem(movie);
-  // }
+  addItemToCart(movie: Movie) {
+    this.cartService.addItem(movie);
+    this.snackBar.open('Filme adicionado ao carrinho!', 'Fechar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
 
   confirmDelete() {
     const dialogRef = this.dialog.open(DeleteDialog, {
@@ -54,7 +59,7 @@ export class MovieCard {
         this.moviesService.deleteOne(this.movie.id).subscribe({
           next: () => {
             this.snackBar.open('Filme excluído com sucesso!', 'Fechar', {
-              horizontalPosition: "end",
+              horizontalPosition: "center",
               verticalPosition: "top",
               duration: 3000
             });
@@ -68,7 +73,7 @@ export class MovieCard {
             }
 
             this.snackBar.open(msg, 'Fechar', {
-              horizontalPosition: "end",
+              horizontalPosition: "center",
               verticalPosition: "top",
               duration: 3000
             });
