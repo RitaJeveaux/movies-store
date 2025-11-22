@@ -3,7 +3,9 @@
   @for (item of cartArray(); track item.movie.id) {
   <mat-list-item>
     <div class="list-item">
+      <div class="title">
       {{ item.movie.title }}
+    </div>
       <div class="quantity-button">
         <button mat-icon-button (click)="removeItemFromCart(item.movie)">
           <mat-icon>remove</mat-icon>
