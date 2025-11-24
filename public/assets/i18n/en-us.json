@@ -1,24 +1,30 @@
 {
-  "APP_TITLE": "Movie Catalog",
-  "NAV": {
+  "APP_TITLE": "Movies Online Store",
+  "HEADER": {
     "HOME": "Home",
-    "MOVIES": "Movies",
-    "ABOUT": "About",
-    "SETTINGS": "Settings",
-    "LANGUAGE": "Language",
+    "LIST_MOVIES": "List Movies",
+    "ADD_MOVIES": "Add Movie",
+    "LOGIN": "Login",
     "LOGOUT": "Logout"
   },
-  "HOME": {
-    "WELCOME": "Welcome to Movie Catalog",
-    "DESCRIPTION": "Browse movies, filter by category, and view details."
-  },
-  "MOVIE": {
+  "MOVIE_FORM": {
     "TITLE": "Title",
+    "TITLE_ERROR_1": "The title is required",
+    "TITLE_ERROR_2": "50 character limit",
     "GENRE": "Genre",
+    "GENRE_SELECT": "Select a genre",
+    "GENRE_MSG": "Gender is mandatory",
+    "PLATAFORM": "Platform",
+    "PLATAFORM_MSG1": "Select a platform",
+    "PLATAFORM_MSG2": "The platform is mandatory",
+    "POSTER": "Poster image",
+    "IMG_MSG": "Choose file",
+    "PRICE": "Price",
+    "PRICE_ERROR": "The minimum price is R$ 0.01",
+    "DESCRIPTION": "Description",
+    "DESCRIPTION_PLACEHOLDER": "Game summary, features, developer, etc.",
     "RELEASE_DATE": "Release date",
     "RATING": "Rating",
-    "DESCRIPTION": "Description",
-    "PRICE": "Price",
     "ADD": "Add movie",
     "EDIT": "Edit",
     "DELETE": "Delete",
@@ -42,7 +48,7 @@
     "INVALID_PRICE": "Enter a valid price."
   },
   "FOOTER": {
-    "COPYRIGHT": "© {{year}} Movie Catalog. All rights reserved."
+    "COPYRIGHT": "© 2025 Movies Online Store. All rights reserved."
   },
   "UI": {
     "ACTION": "Action",

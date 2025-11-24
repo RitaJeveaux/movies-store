@@ -50,6 +50,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem("loggedUser");
   }
+  
   scheduleLogout() {
     clearTimeout(this.expTimer);
 
@@ -70,7 +71,6 @@ export class AuthService {
       this.logout();
       return;
     }
-
     this.scheduleLogout();
   }
 }

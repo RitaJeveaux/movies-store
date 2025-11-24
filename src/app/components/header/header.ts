@@ -8,24 +8,25 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDrawer } from '@angular/material/sidenav';
 import { CartService } from '../../services/cart-service';
 import { MatBadgeModule } from '@angular/material/badge';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLinkActive, RouterLink, MatButtonToggleModule, MatBadgeModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterLinkActive, RouterLink, MatButtonToggleModule, MatBadgeModule, TranslateModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header implements OnInit{
+export class Header implements OnInit {
   @Input() drawer!: MatDrawer;
   cartItemsCount: Signal<number>;
 
-  constructor(private authService: AuthService, private cartService: CartService) {
+  constructor(private authService: AuthService, private cartService: CartService, private translateService: TranslateService) {
     this.cartItemsCount = this.cartService.getTotalItems();
   }
 
   ngOnInit(): void {
-    // const currentLang = localStorage.getItem("selectedLang");
-    // this.translateService.use(currentLang ?? this.translateService.getCurrentLang());
+    const currentLang = localStorage.getItem("selectedLang");
+    this.translateService.use(currentLang ?? this.translateService.getCurrentLang());
   }
 
   get isLoggedIn(): boolean {
@@ -36,9 +37,9 @@ export class Header implements OnInit{
     this.authService.logout();
   }
 
-  // changeLanguage(lang: string) {
-  //   this.translateService.use(lang).subscribe(() => {
-  //     localStorage.setItem("selectedLang", lang);
-  //   });
-  // }
+  changeLanguage(lang: string) {
+    this.translateService.use(lang).subscribe(() => {
+      localStorage.setItem("selectedLang", lang);
+    });
+  }
 }

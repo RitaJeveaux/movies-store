@@ -4,8 +4,8 @@
   <mat-list-item>
     <div class="list-item">
       <div class="title">
-      {{ item.movie.title }}
-    </div>
+        {{ item.movie.title }}
+      </div>
       <div class="quantity-button">
         <button mat-icon-button (click)="removeItemFromCart(item.movie)">
           <mat-icon>remove</mat-icon>
@@ -24,8 +24,13 @@
 </mat-list>
 
 @if(cartArray().length > 0){
-<div class="cart-footer">
+<div class="cart-footer"> 
   <span>Total:</span>
-  <span> {{ getTotalPrice() | currency: 'R$ ' }}</span>
+  <span> {{ getTotalPrice()() | currency: 'R$ ' }}</span>
 </div>
+<div class="cart-actions">
+  <button mat-stroked-button (click)="clearCart()">Limpar Carrinho</button>
+  <button mat-stroked-button (click)="checkout()">Finalizar Compra</button>
+</div>
+
 }

@@ -1,4 +1,4 @@
-import { computed, effect, Injectable, signal, WritableSignal } from '@angular/core';
+import { computed, effect, Injectable, signal, Signal, WritableSignal } from '@angular/core';
 import { CartItem } from '../models/cart-item';
 import { Movie } from '../models/movie';
 
@@ -7,7 +7,12 @@ import { Movie } from '../models/movie';
 })
 export class CartService {
   private cartItemsArray: WritableSignal<Array<CartItem>> = signal<Array<CartItem>>([]);
-  private totalPrice: number = 0;
+  
+  cartTotalPrice: Signal<number> = computed(() => {
+    return this.cartItemsArray().reduce((totalAcum, item) => {
+      return totalAcum + (item.quantity * item.movie.price);
+    }, 0);
+  });
 
   constructor() {
     const cartArrayStr = localStorage.getItem("cartArray");
@@ -15,12 +20,11 @@ export class CartService {
 
     effect(() => {
       localStorage.setItem("cartArray", JSON.stringify(this.cartItemsArray()));
-      this.updateTotalPrice();
     });
   }
 
   getTotalPrice() {
-    return this.totalPrice;
+    return this.cartTotalPrice;
   }
 
   getTotalItems() {
@@ -31,15 +35,12 @@ export class CartService {
     });
   }
 
-  updateTotalPrice() {
-    const cartItemsArray = this.cartItemsArray();
-    this.totalPrice = cartItemsArray.reduce((totalAcum, item) => {
-      return totalAcum + (item.quantity * item.movie.price);
-    }, 0);
-  }
-
   getAllItems() {
     return this.cartItemsArray.asReadonly();
+  }
+
+  clearCart() {
+    this.cartItemsArray.set([]);
   }
 
   addItem(movie: Movie) {

@@ -107,8 +107,8 @@ MIT
 
 - [ ] atualizar quantidade de movies no serve depois da compra
 - [ ] crud completo do user com restrição para edit e delete
-- [ ] criar botoes no cart para limpar o cart e para pagar(checkout)
-- [ ] formatar o display do cart - quase lá
+- [X] criar botoes no cart para limpar o cart e para pagar(checkout)
+- [X] formatar o display do cart - quase lá
 - [ ] implementar a tradução
 - [ ] implementar modulo de pagamentos
 

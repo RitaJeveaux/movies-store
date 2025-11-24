@@ -69,7 +69,7 @@ export class MovieCard {
           error: (err) => {
             let msg = 'Não foi possível excluir o filme.';
             if (err.status == 401) {
-              msg = 'Você não está autorizado para realizar a exclusão de um filme.'
+              msg = 'Você não está autorizado a realizar a exclusão de um filme.'
             }
 
             this.snackBar.open(msg, 'Fechar', {
