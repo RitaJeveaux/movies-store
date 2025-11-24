@@ -1,3 +1,11 @@
-<app-header></app-header>
-<router-outlet />
-<app-footer></app-footer>
+<mat-drawer-container class="app-container" autosize>
+  <mat-drawer #drawer class="app-sidenav" mode="side">
+    <app-cart />
+  </mat-drawer>
+
+  <mat-drawer-content class="app-sidenav-content">
+    <app-header [drawer]="drawer" />
+    <router-outlet />
+    <app-footer />
+  </mat-drawer-content>
+</mat-drawer-container>

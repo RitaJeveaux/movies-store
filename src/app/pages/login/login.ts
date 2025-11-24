@@ -6,10 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth-service';
 import { Router, RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterLink],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -17,6 +18,12 @@ export class Login {
   loginForm: FormGroup;
   emailError: string = "";
   passwordError: string = "Senha inválida.";
+  hide = true;
+
+  toggleHide() {
+    this.hide = !this.hide;
+  }
+
 
   constructor(private snackBar: MatSnackBar, private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
@@ -45,7 +52,7 @@ export class Login {
             "Login realizado com sucesso!",
             "Fechar",
             {
-              horizontalPosition: "end",
+              horizontalPosition: "center",
               verticalPosition: "top",
               duration: 3000,
             }
@@ -59,7 +66,7 @@ export class Login {
           "Login inválido. Por favor, digite credenciais válidas!",
           "Fechar",
           {
-            horizontalPosition: "end",
+            horizontalPosition: "center",
             verticalPosition: "top",
             duration: 3000,
           }

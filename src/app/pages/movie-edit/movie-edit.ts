@@ -52,7 +52,7 @@ export class MovieEdit implements OnInit {
     ).subscribe({
       next: (updatedMovie: Movie) => {
         this.matSnackBar.open(`O filme '${updatedMovie.title}' foi atualizado com sucesso!`, 'Fechar', {
-          horizontalPosition: 'end',
+          horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
         });
@@ -60,7 +60,7 @@ export class MovieEdit implements OnInit {
       },
       error: () => {
         this.matSnackBar.open('Não foi possível atualizar o filme.', 'Fechar', {
-          horizontalPosition: 'end',
+          horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
         });

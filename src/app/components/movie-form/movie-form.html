@@ -9,10 +9,10 @@
       {{ (title?.value?.length || 0) }}/50
     </mat-hint>
     @if (title?.touched && title?.hasError('required')) {
-    <mat-error>O título é obrigatório.</mat-error>
+    <mat-error>O título é obrigatório</mat-error>
     }
     @if (title?.touched && title?.hasError('maxlength')) {
-    <mat-error>Limite de 50 caracteres.</mat-error>
+    <mat-error>Limite de 50 caracteres</mat-error>
     }
   </mat-form-field>
 
@@ -27,7 +27,7 @@
       }
     </mat-select>
     @if (genre?.touched && genre?.hasError('required')) {
-    <mat-error>O gênero é obrigatório.</mat-error>
+    <mat-error>O gênero é obrigatório</mat-error>
     }
   </mat-form-field>
 
@@ -42,7 +42,7 @@
       }
     </mat-select>
     @if (platform?.touched && platform?.hasError('required')) {
-    <mat-error>A plataforma é obrigatória.</mat-error>
+    <mat-error>A plataforma é obrigatória</mat-error>
     }
   </mat-form-field>
 
@@ -65,17 +65,17 @@
     }
   </div>
 
-  <!-- Preço (opcional, min 0.01) -->
+ 
   @let price = formGroup.get('price');
   <mat-form-field appearance="outline" class="w-100">
     <mat-label>Preço (R$)</mat-label>
     <input matInput id="price" type="number" formControlName="price" min="0.01" step="0.01" placeholder="Ex.: 199.90">
     @if (price?.touched && price?.hasError('min')) {
-    <mat-error>O preço mínimo é R$ 0,01.</mat-error>
+    <mat-error>O preço mínimo é R$ 0,01</mat-error>
     }
   </mat-form-field>
 
-  <!-- Descrição (opcional) -->
+ 
   <mat-form-field appearance="outline" class="w-100">
     <mat-label>Descrição</mat-label>
     <textarea matInput id="description" formControlName="description" rows="4" placeholder="Resumo do jogo, recursos, desenvolvedora, etc."></textarea>

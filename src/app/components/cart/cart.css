@@ -1,0 +1,41 @@
+h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+h3 {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.title {
+  overflow-x: auto;
+}
+
+.list-item {
+  align-items: left;
+  display: flex;
+  font-size: 16px;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.quantity-button {
+  font-size: 1.2rem;
+}
+
+.cart-footer{
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 25px;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px; /* Adiciona espaço acima dos botões */
+  margin-bottom: 20px; /* Adiciona espaço abaixo dos botões */
+  gap: 10px; /* Adiciona espaço entre os botões */
+}

@@ -21,3 +21,16 @@ p {
 .send {
   margin-left: auto;
 }
+
+.password-field .mat-icon-button {
+  padding: 8px;
+  margin-right: 0;
+}
+
+.password-field .mat-icon-button:active {
+  transform: scale(0.95);
+}
+
+mat-form-field {
+  width: 100%;
+}

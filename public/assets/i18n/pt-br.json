@@ -1,24 +1,30 @@
 {
-  "APP_TITLE": "Catálogo de Filmes",
-  "NAV": {
+  "APP_TITLE": "Loja de Filmes Online",
+  "HEADER": {
     "HOME": "Início",
-    "MOVIES": "Filmes",
-    "ABOUT": "Sobre",
-    "SETTINGS": "Configurações",
-    "LANGUAGE": "Idioma",
+    "LIST_MOVIES": "Filmes",
+    "ADD_MOVIES": "Adicionar filme",
+    "LOGIN": "Entrar",
     "LOGOUT": "Sair"
   },
-  "HOME": {
-    "WELCOME": "Bem-vinda(o) ao Catálogo de Filmes",
-    "DESCRIPTION": "Navegue pelos filmes, filtre por categoria e veja detalhes."
-  },
-  "MOVIE": {
+  "MOVIE_FORM": {
     "TITLE": "Título",
+    "TITLE_ERROR_1": "O título é obrigatório",
+    "TITLE_ERROR_2": "Limite de 50 caracteres",
     "GENRE": "Gênero",
+    "GENRE_SELECT": "Selecione um gênero",
+    "GENRE_MSG": "O gênero é obrigatório",
+    "PLATAFORM": "Plataforma",
+    "PLATAFORM_MSG1": "Selecione uma plataforma",
+    "PLATAFORM_MSG2": "A plataforma é obrigatória",
+    "POSTER": "Pôster",
+    "IMG_MSG": "Escolher arquivo",
+    "PRICE": "Preço",
+    "PRICE_ERROR": "O preço mínimo é R$ 0,01",
+    "DESCRIPTION": "Descrição",
+    "DESCRIPTION_PLACEHOLDER": "Resumo do jogo, recursos, desenvolvedor, etc.",
     "RELEASE_DATE": "Data de lançamento",
     "RATING": "Avaliação",
-    "DESCRIPTION": "Descrição",
-    "PRICE": "Preço",
     "ADD": "Adicionar filme",
     "EDIT": "Editar",
     "DELETE": "Excluir",
@@ -42,7 +48,7 @@
     "INVALID_PRICE": "Insira um preço válido."
   },
   "FOOTER": {
-    "COPYRIGHT": "© {{year}} Catálogo de Filmes. Todos os direitos reservados."
+    "COPYRIGHT": "© 2025 Loja de Filmes Online. Todos os direitos reservados."
   },
   "UI": {
     "ACTION": "Action",

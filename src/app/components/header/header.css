@@ -12,3 +12,7 @@
   height: 28px;
   object-fit: cover;
 }
+
+.cart-button {
+  margin: 0 20px 0 10px;
+}
