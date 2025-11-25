@@ -3,13 +3,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslateModule],
+  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslateModule, MatIconModule],
   templateUrl: './user-form.html',
   styleUrl: './user-form.css',
 })
@@ -17,6 +18,7 @@ export class UserForm {
   @Input() userForm!: FormGroup;
   @Output() formSubmit = new EventEmitter<any>();
 
+  public hide = true;
   emailError: string = "";
   passwordError: string = "";
 

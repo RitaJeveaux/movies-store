@@ -107,9 +107,9 @@ MIT
 
 - [ ] atualizar quantidade de movies no serve depois da compra
 - [ ] crud completo do user com restrição para edit e delete
-- [ ] implementar a tradução
+- [X] implementar a tradução
 - [ ] implementar modulo de pagamentos
-- [ ] implementar logica para link de add user
+- [X] implementar logica para link de add user
 
 Feedback da API
 

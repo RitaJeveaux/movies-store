@@ -97,7 +97,7 @@
     }
   },
   "MESSAGES": {
-    "ADD_CART": "'Filme adicionado ao carrinho!",
+    "ADD_CART": "Movie added to cart!",
     "SAVED": "Movie saved successfully",
     "DELETED": "Movie deleted",
     "ERROR": "An error occurred. Please try again",
