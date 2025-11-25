@@ -3,11 +3,12 @@ import { Movie } from '../../models/movie';
 import { MovieCard } from '../../components/movie-card/movie-card';
 import { MovieService } from '../../services/movie-service';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-movie-list',
-  imports: [MovieCard, MatProgressSpinner],
+  imports: [MovieCard, MatProgressSpinner, TranslateModule],
   templateUrl: './movie-list.html',
   styleUrl: './movie-list.css',
 })
@@ -17,8 +18,7 @@ export class MovieList implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
-    this.movieService.getAll().subscribe((movies: Array<Movie>) => {
-      console.log(movies);
+    this.movieService.getAll().subscribe((movies: Array<Movie>) => {      
       this.movies = movies;
 
     });

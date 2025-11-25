@@ -5,11 +5,12 @@ import { MovieService } from '../../services/movie-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Movie } from '../../models/movie';
 import { defer, of, switchMap } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-movie-edit',
-  imports: [MovieForm],
+  imports: [MovieForm, TranslateModule],
   templateUrl: './movie-edit.html',
   styleUrl: './movie-edit.css',
 })
@@ -20,7 +21,8 @@ export class MovieEdit implements OnInit {
     private route: ActivatedRoute,
     private moviesService: MovieService,
     private router: Router,
-    private matSnackBar: MatSnackBar
+    private matSnackBar: MatSnackBar,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -51,7 +53,8 @@ export class MovieEdit implements OnInit {
       })
     ).subscribe({
       next: (updatedMovie: Movie) => {
-        this.matSnackBar.open(`O filme '${updatedMovie.title}' foi atualizado com sucesso!`, 'Fechar', {
+       const successMessage = `${this.translate.instant('EDITMOVIE.MOVIE')} '${updatedMovie.title}' ${this.translate.instant('EDITMOVIE.ADD')}`;
+        this.matSnackBar.open(successMessage, this.translate.instant('EDITMOVIE.CLOSE'), {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
@@ -59,7 +62,9 @@ export class MovieEdit implements OnInit {
         this.router.navigate(['']);
       },
       error: () => {
-        this.matSnackBar.open('Não foi possível atualizar o filme.', 'Fechar', {
+        this.matSnackBar.open(
+          this.translate.instant('EDITMOVIE.NOT_ADD'), 
+          this.translate.instant('EDITMOVIE.CLOSE'), {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000

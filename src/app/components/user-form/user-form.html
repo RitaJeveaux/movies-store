@@ -1,13 +1,13 @@
 <form [formGroup]="userForm" (ngSubmit)="submitForm()">
   <div>
     <mat-form-field>
-      <mat-label>Username</mat-label>
+      <mat-label>{{'FORM.USERNAME'| translate}}</mat-label>
       <input matInput formControlName="username" placeholder="Username">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <mat-label>E-mail</mat-label>
+      <mat-label>{{'FORM.EMAIL'| translate}}</mat-label>
       <input matInput formControlName="email" (input)="updateEmailErrorMessage()" (blur)="updateEmailErrorMessage()" placeholder="E-mail">
       @if (this.userForm.controls["email"].invalid) {
       <mat-error>{{emailError}}</mat-error>
@@ -16,10 +16,10 @@
   </div>
   <div>
     <mat-form-field>
-      <mat-label>Password</mat-label>
+      <mat-label>{{'FORM.PASSWORD'| translate}}</mat-label>
       <input matInput type="password" formControlName="password" placeholder="Password">
     </mat-form-field>
   </div>
-  <button mat-stroked-button class="send" [disabled]="this.userForm.invalid">Send</button>
+  <button mat-stroked-button class="send" [disabled]="this.userForm.invalid">{{"FORM.SUBMIT"| translate}}</button>
 
 </form>

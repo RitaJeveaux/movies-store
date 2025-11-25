@@ -107,15 +107,15 @@ MIT
 
 - [ ] atualizar quantidade de movies no serve depois da compra
 - [ ] crud completo do user com restrição para edit e delete
-- [X] criar botoes no cart para limpar o cart e para pagar(checkout)
-- [X] formatar o display do cart - quase lá
 - [ ] implementar a tradução
 - [ ] implementar modulo de pagamentos
+- [ ] implementar logica para link de add user
 
 Feedback da API
 
-- [ ] as imagens dos poster, quando edit do movie, a imagem recebe novo id e a imagem "descartada" permanece no server
+- [ ] as imagens dos poster, quando edit e delete do movie, a imagem recebe novo id e a imagem "descartada" permanece no server
 - [ ] user só tem username, email, password - não tem o role
+- [ ] aula de reposição na terça feira
 
 ## Automatic string extraction for i18n
 

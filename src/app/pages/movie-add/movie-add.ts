@@ -5,10 +5,11 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Movie } from '../../models/movie';
 import { defer, of, switchMap } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movie-add',
-  imports: [MovieForm],
+  imports: [MovieForm, TranslateModule],
   templateUrl: './movie-add.html',
   styleUrl: './movie-add.css',
 })
@@ -16,8 +17,9 @@ export class MovieAdd {
   constructor(
     private moviesService: MovieService,
     private router: Router,
-    private matSnackBar: MatSnackBar
-  ) {}
+    private matSnackBar: MatSnackBar,
+    private translate: TranslateService
+  ) { }
 
   onSave({ movie, file }: { movie: Partial<Movie>, file?: File }) {
     defer(() =>
@@ -34,7 +36,12 @@ export class MovieAdd {
       })
     ).subscribe({
       next: (createdMovie: Movie) => {
-        this.matSnackBar.open(`O filme '${createdMovie.title}' foi criado com sucesso!`, 'Fechar', {
+        const successMessage =
+          `${this.translate.instant('ADDMOVIE.MOVIE')} '${createdMovie.title}' ${this.translate.instant('ADDMOVIE.ADD')}`;
+
+        this.matSnackBar.open(
+          successMessage,
+          this.translate.instant('ADDMOVIE.CLOSE'), {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
@@ -42,7 +49,9 @@ export class MovieAdd {
         this.router.navigate(['']);
       },
       error: () => {
-        this.matSnackBar.open('Não foi possível adicionar o filme.', 'Fechar', {
+        this.matSnackBar.open(
+          this.translate.instant('ADDMOVIE.NOT_ADD'),
+          this.translate.instant('ADDMOVIE.CLOSE'), {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000

@@ -6,24 +6,25 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconButton, MatButtonModule } from '@angular/material/button';
 import { Movie } from '../../models/movie';
 import { CurrencyPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-  imports: [ MatListModule, MatIcon, MatIconButton, CurrencyPipe, MatButtonModule ],
+  imports: [MatListModule, MatIcon, MatIconButton, CurrencyPipe, TranslateModule, MatButtonModule],
   templateUrl: './cart.html',
   styleUrl: './cart.css',
 })
 export class Cart implements OnInit {
   cartArray: Signal<Array<CartItem>> = signal<Array<CartItem>>([]);
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartArray = this.cartService.getAllItems();
     console.log('Cart (ngOnInit):', this.cartArray());
   }
 
-  getTotalPrice(): Signal<number> { // Alterar o tipo de retorno para Signal<number>
+  getTotalPrice(): Signal<number> { 
     return this.cartService.getTotalPrice();
   }
 
@@ -38,8 +39,7 @@ export class Cart implements OnInit {
   }
 
   clearCart() {
-    this.cartService.clearCart();
-    console.log('Cart (clearCart):', this.cartArray());
+    this.cartService.clearCart();  
   }
 
   checkout() {

@@ -6,10 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelect } from '@angular/material/select';
 import { Movie } from '../../models/movie';
 import { RouterLink } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movie-form',
-  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatSelect, MatOption, ReactiveFormsModule, RouterLink],
+  imports: [MatFormFieldModule, MatInputModule, MatButtonModule, MatSelect, MatOption, ReactiveFormsModule, RouterLink, TranslateModule],
   templateUrl: './movie-form.html',
   styleUrl: './movie-form.css',
 })
@@ -20,20 +21,43 @@ export class MovieForm implements OnInit {
 
   formGroup: FormGroup;
   platforms: Array<string> = [
-    "In Theaters", "Streaming", "On Demand", "Coming Soon", "Now Playing",
-    "Pre-Order", "New Releases", "Top Rated", "Classics", "Exclusive", "Special Edition"
+    'PLATFORM.IN_THEATERS',
+    'PLATFORM.STREAMING',
+    'PLATFORM.ON_DEMAND',
+    'PLATFORM.COMING_SOON',
+    'PLATFORM.NOW_PLAYING',
+    'PLATFORM.PRE_ORDER'
   ];
   genres: Array<string> = [
-    "Action", "Drama", "Science Fiction", "Thriller", "Romance", "Horror",
-    "Adventure", "Fantasy", "Comedy", "Documentary", "Mystery", "Animation",
-    "Biography", "Crime", "Family", "History", "Music", "Musical", "Sport",
-    "War", "Western", "Film Noir", "Short Film"
+    'GENRE.ACTION',
+    'GENRE.DRAMA',
+    'GENRE.SCIENCE_FICTION',
+    'GENRE.THRILLER',
+    'GENRE.ROMANCE',
+    'GENRE.HORROR',
+    'GENRE.ADVENTURE',
+    'GENRE.FANTASY',
+    'GENRE.COMEDY',
+    'GENRE.DOCUMENTARY',
+    'GENRE.MYSTERY',
+    'GENRE.ANIMATION',
+    'GENRE.BIOGRAPHY',
+    'GENRE.CRIME',
+    'GENRE.FAMILY',
+    'GENRE.HISTORY',
+    'GENRE.MUSIC',
+    'GENRE.MUSICAL',
+    'GENRE.SPORT',
+    'GENRE.WAR',
+    'GENRE.WESTERN',
+    'GENRE.FILM_NOIR',
+    'GENRE.SHORT_FILM'
   ];
   imagePreview?: string | null;
   fileError?: string | null;
   file: File | undefined;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.formGroup = new FormGroup({
       title: new FormControl("", [Validators.required, Validators.maxLength(50)]),
       genre: new FormControl("", [Validators.required]),
@@ -63,7 +87,7 @@ export class MovieForm implements OnInit {
     }
 
     if (!this.file.type.startsWith('image/')) {
-      this.fileError = 'Por favor, selecione um arquivo do tipo imagem';
+      this.fileError = this.translate.instant('FILE_ERRORS.NOT_IMAGE');
       this.imagePreview = null;
       return;
     }

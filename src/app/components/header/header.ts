@@ -19,6 +19,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class Header implements OnInit {
   @Input() drawer!: MatDrawer;
   cartItemsCount: Signal<number>;
+  selectedLang: string | null = 'pt-br';
 
   constructor(private authService: AuthService, private cartService: CartService, private translateService: TranslateService) {
     this.cartItemsCount = this.cartService.getTotalItems();
@@ -26,6 +27,7 @@ export class Header implements OnInit {
 
   ngOnInit(): void {
     const currentLang = localStorage.getItem("selectedLang");
+    this.selectedLang = currentLang;
     this.translateService.use(currentLang ?? this.translateService.getCurrentLang());
   }
 
@@ -40,6 +42,7 @@ export class Header implements OnInit {
   changeLanguage(lang: string) {
     this.translateService.use(lang).subscribe(() => {
       localStorage.setItem("selectedLang", lang);
+      this.selectedLang = lang;
     });
   }
 }
