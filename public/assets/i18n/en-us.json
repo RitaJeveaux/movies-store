@@ -121,11 +121,22 @@
     "CLOSE": "Close",
     "NOT_ADD": "Unable to add the movie"
   },
+  "USER": {
+    "ADD": "User Registration"
+  },
   "EDITMOVIE": {
     "MOVIE": "The movie",
     "ADD": "was successfully updated",
     "CLOSE": "Close",
     "NOT_ADD": "Unable to update the movie"
+  },
+  "LOGIN": {
+    "ERROR_PASSWORD": "Invalid password",
+    "REQUIRED_EMAIL": "Email field must be filled in",
+    "ERROR_EMAIL": "Invalid email field",
+    "INVALID_EMAIL": "Invalid login. Please enter valid credentials!",
+    "SUCCESS": "Login successful!",
+    "CLOSE": "Close"
   },
   "FOOTER": {
     "COPYRIGHT": "© 2025 Movies Online Store. All rights reserved."

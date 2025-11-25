@@ -2,13 +2,13 @@
   <div>
     <mat-form-field>
       <mat-label>{{'FORM.USERNAME'| translate}}</mat-label>
-      <input matInput formControlName="username" placeholder="Username">
+      <input matInput formControlName="username" [attr.placeholder]="'FORM.PLACEHOLDER_USERNAME' | translate">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
       <mat-label>{{'FORM.EMAIL'| translate}}</mat-label>
-      <input matInput formControlName="email" (input)="updateEmailErrorMessage()" (blur)="updateEmailErrorMessage()" placeholder="E-mail">
+      <input matInput formControlName="email" (input)="updateEmailErrorMessage()" (blur)="updateEmailErrorMessage()" [attr.placeholder]="'FORM.PLACEHOLDER_EMAIL' | translate">
       @if (this.userForm.controls["email"].invalid) {
       <mat-error>{{emailError}}</mat-error>
       }
@@ -17,9 +17,8 @@
   <div>
     <mat-form-field>
       <mat-label>{{'FORM.PASSWORD'| translate}}</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="Password">
+      <input matInput type="password" formControlName="password" [attr.placeholder]="'FORM.PLACEHOLDER_PASSWORD' | translate">
     </mat-form-field>
   </div>
   <button mat-stroked-button class="send" [disabled]="this.userForm.invalid">{{"FORM.SUBMIT"| translate}}</button>
-
 </form>

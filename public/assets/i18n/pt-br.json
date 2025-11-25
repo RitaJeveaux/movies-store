@@ -115,6 +115,9 @@
     "REQUIRED": "Este campo é obrigatório",
     "INVALID_PRICE": "Insira um preço válido"
   },
+  "USER": {
+    "ADD": "Cadastro de Usuário"
+  },
   "ADDMOVIE": {
     "MOVIE": "O filme",
     "ADD": "foi adicionado com sucesso",
@@ -126,6 +129,14 @@
     "ADD": "foi atualizado com sucesso",
     "CLOSE": "Fechar",
     "NOT_ADD": "Não foi possível atualizar o filme"
+  },
+  "LOGIN": {
+    "ERROR_PASSWORD": "Senha inválida",
+    "REQUIRED_EMAIL": "Campo e-mail deve ser preenchido",
+    "ERROR_EMAIL": "Campo e-mail inválido",
+    "INVALID_EMAIL": "Login inválido. Por favor, digite credenciais válidas!",
+    "SUCCESS": "Login realizado com sucesso!",
+    "CLOSE": "Fechar"
   },
   "FOOTER": {
     "COPYRIGHT": "© 2025 Loja de Filmes Online. Todos os direitos reservados."

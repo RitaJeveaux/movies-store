@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth-service';
 import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export class Login {
   loginForm: FormGroup;
   emailError: string = "";
-  passwordError: string = "Senha inválida.";
+  passwordError: string = "";
   hide = true;
 
   toggleHide() {
@@ -26,7 +26,7 @@ export class Login {
   }
 
 
-  constructor(private snackBar: MatSnackBar, private authService: AuthService, private router: Router) {
+  constructor(private snackBar: MatSnackBar, private authService: AuthService, private router: Router, private translate: TranslateService) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required])
@@ -35,9 +35,9 @@ export class Login {
 
   updateEmailErrorMessage() {
     if (this.loginForm.controls["email"].hasError('required')) {
-      this.emailError = 'Campo e-mail deve ser preenchido';
+      this.emailError = this.translate.instant('LOGIN.REQUIRED_EMAIL');
     } else if (this.loginForm.controls["email"].hasError('email')) {
-      this.emailError = 'Campo e-mail inválido';
+      this.emailError = this.translate.instant('LOGIN.ERROR_EMAIL');
     } else {
       this.emailError = '';
     }
@@ -50,8 +50,8 @@ export class Login {
       next: (isLoggedIn: boolean) => {
         if (isLoggedIn) {
           this.snackBar.open(
-            "Login realizado com sucesso!",
-            "Fechar",
+            this.translate.instant('LOGIN.SUCCESS'),
+            this.translate.instant('LOGIN.CLOSE'),
             {
               horizontalPosition: "center",
               verticalPosition: "top",
@@ -64,8 +64,8 @@ export class Login {
       },
       error: (err) => {
         this.snackBar.open(
-          "Login inválido. Por favor, digite credenciais válidas!",
-          "Fechar",
+          this.translate.instant('LOGIN.INVALID_EMAIL'),
+          this.translate.instant('LOGIN.CLOSE'),
           {
             horizontalPosition: "center",
             verticalPosition: "top",
