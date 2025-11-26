@@ -1,6 +1,6 @@
-<h2 mat-dialog-title>Excluir filme</h2>
-<mat-dialog-content>Tem certeza de que deseja excluir "{{ data.title }}"?</mat-dialog-content>
+<h2 mat-dialog-title>{{"DELETE_DIALOG.DELETE_MOVIE" | translate }}</h2>
+<mat-dialog-content>{{"DELETE_DIALOG.MSG" | translate }} {{ data.title }}?</mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button [mat-dialog-close]="false">Cancelar</button>
-  <button mat-raised-button color="warn" [mat-dialog-close]="true">Excluir</button>
+  <button mat-button [mat-dialog-close]="false">{{"DELETE_DIALOG.CANCEL" | translate }}</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">{{"DELETE_DIALOG.DELETE" | translate }}</button>
 </mat-dialog-actions>

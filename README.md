@@ -1,123 +1,113 @@
-# Movie Catalog (Angular)
+# 🎬 Movie Store (Angular)
 
-**Status:** Implemented with internationalization, Angular Material UI, and connects to the movies API from Prof. Luis Fernando Bicalho.
+Este projeto é uma aplicação de e-commerce para uma loja de filmes, desenvolvida com Angular e Angular Material.  
+Conta com autenticação, CRUD de filmes, carrinho de compras e internacionalização completa (PT/EN). 
+<p> O projeto foi estruturado para ser modular e escalável, utilizando as melhores práticas do Angular, como o uso de serviços para a lógica de negócios, componentes reutilizáveis e rotas bem definidas com guardas de proteção.
+</p>
 
-## Overview
+---
 
-Movie Catalog is an Angular application to browse, search, add, edit and delete movies. The UI uses Angular Material components and supports internationalization (English and Portuguese) through JSON translation files located in `public/assets/i18n/` (`en.json`, `pt.json`). The project is intended to run locally together with the example API provided by Prof. Luis Fernando Bicalho: `https://github.com/Kirink212/api-examples` (movies-api).
+# 🎥 Demonstração da Aplicação
 
-## Technologies
+![Demonstração da Aplicação](./public/assets/gifs/peek_movie_store.gif)
 
-- Angular (version used in project)
-- Angular Material
-- RxJS
-- TypeScript
-- HTML / SCSS
-- Node.js & npm
-- The backend API: `movies-api` from Kirink212 (Professor Luis Fernando Bicalho)
 
-## Project structure (high level)
+---
+## 🚀 Como executar
 
-```
-/public/assets/i18n/   # translation JSON files (en.json, pt.json)
-src/
-  app/
-    modules/
-    components/
-    services/
-    models/
-  assets/
-  environments/
-angular.json
-package.json
-README.md
-```
-
-## Internationalization (i18n)
-
-Translations are provided in `public/assets/i18n/en.json` and `public/assets/i18n/pt.json`. The app loads the appropriate JSON at runtime using a translation loader (for example `@ngx-translate/core` with `TranslateHttpLoader`) or a custom service that fetches `/assets/i18n/{lang}.json`.
-
-Example usage in templates:
-```html
-<h1>{ 'HOME.WELCOME' | translate }</h1>
-<button mat-button>{ 'MOVIE.ADD' | translate }</button>
-```
-
-## Prerequisites
-
-- Node.js (>= 16 recommended)
-- npm (>= 8) or yarn
-- Angular CLI (optional, for development): `npm install -g @angular/cli`
-- The example backend API (clone and run locally): `https://github.com/Kirink212/api-examples` (see instructions below)
-
-## How to run the project locally
-
-1. Clone this frontend repo or extract the ZIP.
-2. Install dependencies:
+### 1. Baixe e execute a API (cedida pelo professor **Luis Fernando Bicalho**)
 ```bash
-npm install
-```
-3. Run the backend API locally:
-```bash
-# clone the API examples (movies-api)
 git clone https://github.com/Kirink212/api-examples.git
 cd api-examples/movies-api
 npm install
-npm run start
-```
-The backend will run on `http://localhost:3000` (confirm the port in the API README or code). The frontend expects the API to be available locally — update `environment.ts` if the API runs on another port.
-
-4. Run the frontend:
-```bash
-ng serve --open
-```
-Or
-```bash
 npm start
 ```
-The app will open at `http://localhost:4200`.
+Endpoints principais:
 
-## Configuration
+```
+GET /movies
+GET /movies/:id
+POST /movies
+PUT /movies/:id
+DELETE /movies/:id
+POST /login
+POST /register
+```
 
-- API base URL: configured in `src/environments/environment.ts` as `apiUrl`. Set to `http://localhost:3000` when running locally with the professor's API.
-- i18n files location: `public/assets/i18n/{lang}.json`
+---
 
-## Scripts
+### 2. Execute o frontend
+```bash
+git clone https://github.com/RitaJeveaux/movies-store.git
+npm install
+ng server
+```
 
-- `npm start` — starts the frontend dev server (maps to `ng serve`)
-- `npm run build` — builds the app for production
-- `npm test` — runs unit tests (if configured)
-- `npm run lint` — runs linter (if configured)
+Frontend: http://localhost:4200  
+Backend: http://localhost:3000
 
-## Notes about the backend API
+---
 
-This frontend was built to work with the `movies-api` example provided in the referenced GitHub repository. That API exposes endpoints to list, get, create, update, and delete movies. Adjust `environment.apiUrl` if the API runs on a different host/port.
+### 3. Para Login
 
-## Contributing
+- Email: admin@admin.com 
+- Senha: admin1234
 
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature/name`
-3. Commit changes: `git commit -m "feat: description"`
-4. Push and open a Pull Request
 
-## License
+---
+## ✨ Funcionalidades
 
-MIT
-## O que ainda falta:
+### 🎬 Catálogo de Filmes
+- Cards com título, imagem, preço e ações
+- Categoria e plataforma traduzidas dinamicamente
 
-- [ ] atualizar quantidade de movies no serve depois da compra
-- [ ] crud completo do user com restrição para edit e delete
-- [X] criar botoes no cart para limpar o cart e para pagar(checkout)
-- [X] formatar o display do cart - quase lá
-- [ ] implementar a tradução
-- [ ] implementar modulo de pagamentos
+### 🛒 Carrinho de Compras
+- Adicionar filmes
+- Limpar carrinho
 
-Feedback da API
+### 🔐 Autenticação
+- Login
+- Controle de permissões
+- Páginas restritas
+- Rotas protegidas  
 
-- [ ] as imagens dos poster, quando edit do movie, a imagem recebe novo id e a imagem "descartada" permanece no server
-- [ ] user só tem username, email, password - não tem o role
+### 🛠 CRUD de Filmes (somente usuários logados) 
+- Criar
+- Editar
+- Remover
+- Upload + preview de imagens
+- Formulários reativos  
 
-## Automatic string extraction for i18n
+### 🌐 Internacionalização (i18n)
+- PT-BR 🇧🇷  
+- EN-US 🇺🇸
 
-- Detectei e extraí 165 strings do código (templates e arquivos .ts). Elas foram adicionadas em `public/assets/i18n/en.json` e `pt.json` sob a chave `UI`.
-- Algumas traduções em PT são suposições e devem ser revisadas manualmente.
+---
+
+## 🧱 Tecnologias utilizadas
+
+- Angular 20 
+- Angular Material  
+- RxJS  
+- ngx-translate  
+- API REST (Node.js / JSON Server)  
+- TypeScript  
+
+---
+
+## 🙏 Agradecimentos
+
+Agradeço profundamente:
+
+- a **Cognizant**, pela oportunidade do curso  
+- a **ADA**, pela excelência do conteúdo e metodologia  
+- Aos queridos professores  
+  - **Luis Fernando Bicalho** 
+  - **Roosevelt Franklin**
+
+---
+
+Este projeto é o **projeto final do curso de Angular**, desenvolvido com muito carinho, dedicação e café. ☕✨
+
+---
+<p style="text-align:center">Novenbro de 2025</p>

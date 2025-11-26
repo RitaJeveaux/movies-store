@@ -1,14 +1,14 @@
 <form [formGroup]="userForm" (ngSubmit)="submitForm()">
   <div>
     <mat-form-field>
-      <mat-label>Username</mat-label>
-      <input matInput formControlName="username" placeholder="Username">
+      <mat-label>{{'FORM.USERNAME'| translate}}</mat-label>
+      <input matInput formControlName="username" [attr.placeholder]="'FORM.PLACEHOLDER_USERNAME' | translate">
     </mat-form-field>
   </div>
   <div>
     <mat-form-field>
-      <mat-label>E-mail</mat-label>
-      <input matInput formControlName="email" (input)="updateEmailErrorMessage()" (blur)="updateEmailErrorMessage()" placeholder="E-mail">
+      <mat-label>{{'FORM.EMAIL'| translate}}</mat-label>
+      <input matInput formControlName="email" (input)="updateEmailErrorMessage()" (blur)="updateEmailErrorMessage()" [attr.placeholder]="'FORM.PLACEHOLDER_EMAIL' | translate">
       @if (this.userForm.controls["email"].invalid) {
       <mat-error>{{emailError}}</mat-error>
       }
@@ -16,10 +16,12 @@
   </div>
   <div>
     <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password" placeholder="Password">
+      <mat-label>{{'FORM.PASSWORD'| translate}}</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" [attr.placeholder]="'FORM.PLACEHOLDER_PASSWORD' | translate">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
     </mat-form-field>
   </div>
-  <button mat-stroked-button class="send" [disabled]="this.userForm.invalid">Send</button>
-
+  <button mat-stroked-button class="send" [disabled]="this.userForm.invalid">{{"FORM.SUBMIT"| translate}}</button>
 </form>

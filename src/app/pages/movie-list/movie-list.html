@@ -4,16 +4,16 @@
   <app-movie-card [movie]="movie" (deleteCard)="deleteCard($event)" />
   }
   @empty {
-  <b>Nenhum filme cadastrado</b>
+  <b>{{ 'MOVIELIST.EMPTY'| translate }}</b>
   }
   }
   @placeholder() {
-  <b>Carregando...</b>
+  <b>{{ 'MOVIELIST.LOAD' | translate }}</b>
   }
   @loading (minimum 2s) {
   <mat-spinner></mat-spinner>
   }
   @error {
-  <b>Erro no carregamento</b>
+  <b>{{ 'MOVIELIST.ERROR' | translate }}</b>
   }
 </div>

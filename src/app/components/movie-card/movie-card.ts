@@ -11,10 +11,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../services/auth-service';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart-service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [MatCardModule, MatIcon, MatIconButton, RouterLink, CommonModule],
+  imports: [MatCardModule, MatIcon, MatIconButton, RouterLink, CommonModule, TranslateModule],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
@@ -27,7 +28,8 @@ export class MovieCard {
     private moviesService: MovieService,
     private cartService: CartService,
     private authService: AuthService,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private translate: TranslateService) {
 
   }
 
@@ -37,7 +39,9 @@ export class MovieCard {
 
   addItemToCart(movie: Movie) {
     this.cartService.addItem(movie);
-    this.snackBar.open('Filme adicionado ao carrinho!', 'Fechar', {
+    this.snackBar.open(
+      this.translate.instant('MESSAGES.ADD_CART'),
+      this.translate.instant('MESSAGES.CLOSE'), {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top'
@@ -58,7 +62,9 @@ export class MovieCard {
 
         this.moviesService.deleteOne(this.movie.id).subscribe({
           next: () => {
-            this.snackBar.open('Filme excluído com sucesso!', 'Fechar', {
+            this.snackBar.open(
+              this.translate.instant('MESSAGES.DELETE_MOVIE'),
+              this.translate.instant('MESSAGES.CLOSE'), {
               horizontalPosition: "center",
               verticalPosition: "top",
               duration: 3000
@@ -67,12 +73,14 @@ export class MovieCard {
             this.deleteCard.emit(this.movie.id);
           },
           error: (err) => {
-            let msg = 'Não foi possível excluir o filme.';
+            let msg = this.translate.instant('MESSAGES.DELETE_ERROR');
             if (err.status == 401) {
-              msg = 'Você não está autorizado a realizar a exclusão de um filme.'
+              msg = this.translate.instant('MESSAGES.DELETE_AUTH');
             }
 
-            this.snackBar.open(msg, 'Fechar', {
+            this.snackBar.open(
+              msg,
+              this.translate.instant('MESSAGES.CLOSE'), {
               horizontalPosition: "center",
               verticalPosition: "top",
               duration: 3000

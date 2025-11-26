@@ -8,6 +8,9 @@
   <button matButton routerLink="add" routerLinkActive="active-button" [routerLinkActiveOptions]="{ exact: true }">
     {{'HEADER.ADD_MOVIES' | translate}}
   </button>
+  <button matButton routerLink="/users/add" routerLinkActive="active-button" [routerLinkActiveOptions]="{ exact: true }">
+    {{'FORM.ADD_USER' | translate}}
+  </button>
   <button matButton routerLinkActive="active-button" (click)="logoutCurrentUser()">
     {{'HEADER.LOGOUT' | translate}}
   </button>
@@ -22,8 +25,8 @@
     </div>
 
   </button>
-  <mat-button-toggle-group name="languages" aria-label="Choose language">
-    <mat-button-toggle class="flag" (click)="changeLanguage('pt-br')"><img src="assets/icons/brasil.svg" alt="pt-br" /></mat-button-toggle>
-    <mat-button-toggle class="flag" (click)="changeLanguage('en-us')"><img src="assets/icons/estados-unidos.svg" alt="en-us" /></mat-button-toggle>
+  <mat-button-toggle-group name="languages" aria-label="Choose language" [value]="selectedLang" (change)="changeLanguage($event.value)">
+    <mat-button-toggle class="flag" value="pt-br"><img src="assets/icons/brasil.svg" alt="pt-br" /></mat-button-toggle>
+    <mat-button-toggle class="flag" value="en-us"><img src="assets/icons/estados-unidos.svg" alt="en-us" /></mat-button-toggle>
   </mat-button-toggle-group>
 </mat-toolbar>

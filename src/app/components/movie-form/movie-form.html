@@ -3,55 +3,55 @@
   <!-- Título -->
   @let title = formGroup.get('title');
   <mat-form-field appearance="outline" class="w-100">
-    <mat-label>Título *</mat-label>
-    <input matInput id="title" formControlName="title" maxlength="50" placeholder="Ex.: Avatar">
+    <mat-label>{{ 'FORM.TITLE' | translate }} </mat-label>
+    <input matInput id="title" formControlName="title" maxlength="50" [attr.placeholder]="'FORM.PLACEHOLDER_TITLE' | translate">
     <mat-hint align="end">
       {{ (title?.value?.length || 0) }}/50
     </mat-hint>
     @if (title?.touched && title?.hasError('required')) {
-    <mat-error>O título é obrigatório</mat-error>
+    <mat-error>{{ 'FORM.ERRORS.TITLE_REQUIRED' | translate }}</mat-error>
     }
     @if (title?.touched && title?.hasError('maxlength')) {
-    <mat-error>Limite de 50 caracteres</mat-error>
+    <mat-error>{{ 'FORM.ERRORS.TITLE_MAXLENGTH' | translate }}</mat-error>
     }
   </mat-form-field>
 
   <!-- Gênero -->
   @let genre = formGroup.get('genre');
   <mat-form-field appearance="outline" class="w-100">
-    <mat-label>Gênero *</mat-label>
+    <mat-label>{{ 'FORM.GENRE_LABEL' | translate }}</mat-label>
     <mat-select id="genre" formControlName="genre">
-      <mat-option [value]="''" disabled>Selecione um gênero</mat-option>
+      <mat-option [value]="''" disabled>{{ 'FORM.SELECT_GENRE' | translate }}</mat-option>
       @for (g of genres; track g) {
-      <mat-option [value]="g">{{ g }}</mat-option>
+      <mat-option [value]="g">{{ 'FORM.' + g | translate}}</mat-option>
       }
     </mat-select>
     @if (genre?.touched && genre?.hasError('required')) {
-    <mat-error>O gênero é obrigatório</mat-error>
+    <mat-error>{{ 'FORM.ERRORS.GENRE_REQUIRED' | translate }}</mat-error>
     }
   </mat-form-field>
 
   <!-- Plataforma -->
   @let platform = formGroup.get('platform');
   <mat-form-field appearance="outline" class="w-100">
-    <mat-label>Plataforma *</mat-label>
+    <mat-label>{{ 'FORM.PLATFORM_LABEL' | translate }}</mat-label>
     <mat-select id="platform" formControlName="platform">
-      <mat-option [value]="''" disabled>Selecione uma plataforma</mat-option>
+      <mat-option [value]="''" disabled>{{ 'FORM.SELECT_PLATFORM' | translate }}</mat-option>
       @for (p of platforms; track p) {
-      <mat-option [value]="p">{{ p }}</mat-option>
+      <mat-option [value]="p">{{ 'FORM.' + p | translate}}</mat-option>
       }
     </mat-select>
     @if (platform?.touched && platform?.hasError('required')) {
-    <mat-error>A plataforma é obrigatória</mat-error>
+    <mat-error>{{ 'FORM.ERRORS.PLATFORM_REQUIRED' | translate }}</mat-error>
     }
   </mat-form-field>
 
   <div class="file-field">
-    <label class="block mb-1">Poster image</label>
+    <label class="block mb-1">{{ 'FORM.POSTER' | translate }}</label>
 
     <input type="file" #fileInput accept="image/*" style="display: none;" (change)="onFileSelected($event)" />
     <button mat-raised-button color="primary" (click)="fileInput.click()" type="button">
-      Escolher arquivo
+      {{ 'FORM.CHOOSE_FILE' | translate }}
     </button>
 
     @if (fileError) {
@@ -61,33 +61,35 @@
     @if (imagePreview) {
     <div class="preview">
       <img [src]="imagePreview" alt="Preview" style="max-width: 240px; margin-top: 8px;" />
-    </div>
-    }
+    </div>    }
   </div>
 
- 
+
   @let price = formGroup.get('price');
   <mat-form-field appearance="outline" class="w-100">
-    <mat-label>Preço (R$)</mat-label>
-    <input matInput id="price" type="number" formControlName="price" min="0.01" step="0.01" placeholder="Ex.: 199.90">
+    <mat-label>{{ 'FORM.PRICE' | translate }} (R$)</mat-label>
+    <input matInput id="price" type="number" formControlName="price" min="0.01" step="0.01" [attr.placeholder]="'FORM.PLACEHOLDER_PRICE' | translate" >
     @if (price?.touched && price?.hasError('min')) {
-    <mat-error>O preço mínimo é R$ 0,01</mat-error>
+    <mat-error>{{ 'FORM.ERRORS.PRICE_MIN' | translate }}1</mat-error>
     }
   </mat-form-field>
 
- 
+
   <mat-form-field appearance="outline" class="w-100">
-    <mat-label>Descrição</mat-label>
-    <textarea matInput id="description" formControlName="description" rows="4" placeholder="Resumo do jogo, recursos, desenvolvedora, etc."></textarea>
+    <mat-label>{{ 'FORM.DESCRIPTION' | translate }}</mat-label>
+    <textarea matInput id="description" formControlName="description" rows="4" 
+    [attr.placeholder]=" 'FORM.PLACEHOLDER_DESCRIPTION' | translate ">
+
+    </textarea>
   </mat-form-field>
 
   <!-- Quantidade em estoque (opcional, min 1) -->
   @let stock = formGroup.get('availableInStock');
   <mat-form-field appearance="outline" class="w-100">
-    <mat-label>Quantidade em estoque</mat-label>
-    <input matInput id="availableInStock" type="number" formControlName="availableInStock" min="1" step="1" placeholder="Ex.: 10">
+    <mat-label>{{ 'FORM.STOCK' | translate }}</mat-label>
+    <input matInput id="availableInStock" type="number" formControlName="availableInStock" min="1" step="1" [attr.placeholder]="'FORM.PLACEHOLDER_STOCK'| translate">
     @if (stock?.touched && stock?.hasError('min')) {
-    <mat-error>O mínimo é 1 unidade.</mat-error>
+    <mat-error>{{ 'FORM.ERRORS.STOCK_MIN' | translate }}</mat-error>
     }
   </mat-form-field>
 
@@ -95,18 +97,18 @@
   <div class="d-flex gap-2 mt-2 text-center">
     <button mat-stroked-button color="primary" class="active-button" type="submit" [disabled]="formGroup.invalid || formGroup.pending">
       @if (isEditMode) {
-      <span>Atualizar</span>
+      <span>{{ 'FORM.UPDATE' | translate }}</span>
       } @else {
-      <span>Salvar</span>
+      <span>{{ 'FORM.SAVE' | translate }}</span>
       }
     </button>
 
     <button mat-stroked-button type="button" class="active-button" routerLink="/">
-      Cancelar
+      {{ 'FORM.CANCEL' | translate }}
     </button>
 
     <button mat-stroked-button type="button" class="active-button" (click)="formGroup.reset()">
-      Limpar
+      {{ 'FORM.CLEAR' | translate }}
     </button>
   </div>
 

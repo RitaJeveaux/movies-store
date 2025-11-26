@@ -2,7 +2,7 @@
     <img mat-card-image src="{{ movie.imageLink?? 'assets/default_poster.png' }}" alt="{{ movie.title }} Poster" (error)="movie.imageLink = '/assets/default_poster.png'">
     <mat-card-header>
         <mat-card-title>{{ movie.title }}</mat-card-title>
-        <mat-card-subtitle>{{ movie.genre }}</mat-card-subtitle>
+        <mat-card-subtitle>{{'FORM.' + movie.genre | translate}}</mat-card-subtitle>
         <mat-card-subtitle class="price">
             {{ movie.price | currency:'BRL' }}
         </mat-card-subtitle>
