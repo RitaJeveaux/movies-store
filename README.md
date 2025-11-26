@@ -40,7 +40,7 @@ POST /register
 ```bash
 git clone https://github.com/RitaJeveaux/movies-store.git
 npm install
-ng server
+ng serve
 ```
 
 Frontend: http://localhost:4200  
