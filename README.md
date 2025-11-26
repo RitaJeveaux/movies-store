@@ -1,123 +1,74 @@
-# Movie Catalog (Angular)
+# Movie Store (Angular)
 
-**Status:** Implemented with internationalization, Angular Material UI, and connects to the movies API from Prof. Luis Fernando Bicalho.
+Este projeto é uma aplicação de e-commerce para uma loja de filmes, desenvolvida com Angular. A interface utiliza componentes do Angular Material para uma experiência de usuário moderna e responsiva.
 
-## Overview
+## Sobre o Projeto
 
-Movie Catalog is an Angular application to browse, search, add, edit and delete movies. The UI uses Angular Material components and supports internationalization (English and Portuguese) through JSON translation files located in `public/assets/i18n/` (`en.json`, `pt.json`). The project is intended to run locally together with the example API provided by Prof. Luis Fernando Bicalho: `https://github.com/Kirink212/api-examples` (movies-api).
+A Movie Store permite que os usuários naveguem por um catálogo de filmes, vejam detalhes como preço e descrição, e adicionem itens a um carrinho de compras. A aplicação também conta com um sistema de autenticação: usuários autenticados têm permissões elevadas, como a capacidade de adicionar, editar e remover filmes do catálogo.
 
-## Technologies
+O projeto foi estruturado para ser modular e escalável, utilizando as melhores práticas do Angular, como o uso de serviços para a lógica de negócios, componentes reutilizáveis e rotas bem definidas com guardas de proteção.
 
-- Angular (version used in project)
-- Angular Material
-- RxJS
-- TypeScript
-- HTML / SCSS
-- Node.js & npm
-- The backend API: `movies-api` from Kirink212 (Professor Luis Fernando Bicalho)
+## Funcionalidades Principais
 
-## Project structure (high level)
+*   **Catálogo de Filmes:** Exibição dos filmes em formato de cards, com imagem, título, preço e descrição.
+*   **Autenticação de Usuários:** Páginas de login e cadastro. O acesso a funcionalidades de gerenciamento (adicionar, editar, remover) é restrito a usuários autenticados.
+*   **Gerenciamento de Filmes (CRUD):**
+    *   **Criação:** Formulário para adicionar novos filmes, incluindo upload de imagem com preview.
+    *   **Edição:** Formulário preenchido com os dados atuais do filme para fácil atualização.
+    *   **Remoção:** Exclusão de filmes do catálogo com uma caixa de diálogo para confirmação.
+*   **Carrinho de Compras:** Adição dinâmica de itens ao carrinho, que pode ser acessado a qualquer momento pelo header.
+*   **Internacionalização (i18n):** Suporte para os idiomas Português (pt-br) e Inglês (en-us), com a possibilidade de trocar o idioma diretamente no header da aplicação.
 
-```
-/public/assets/i18n/   # translation JSON files (en.json, pt.json)
-src/
-  app/
-    modules/
-    components/
-    services/
-    models/
-  assets/
-  environments/
-angular.json
-package.json
-README.md
-```
+## Checklist de Requisitos
 
-## Internationalization (i18n)
+- [X] Catálogo com os itens, com cada um representado como um card contendo: imagem, título, preço e descrição.
+- [X] Para cada item do catálogo, devem haver três botões: adicionar ao carrinho, edição e remoção (usem ícones).
+- [X] Os botões de edição e remoção só aparecerão para alguém estiver logado.
+- [ ] Cada item deve possuir: título/nome, descrição, **data de criação**, preço, quantidade no estoque, imagem ilustrativa. (*Observação: o campo "data de criação" não está implementado no modelo de dados atual.*)
+- [X] Deve haver uma página de login e uma página de cadastro, caso a pessoa não possua conta.
+- [X] Deve haver um header com navegação e um botão para fazer o login ou logout (o botão de login só aparece quando o usuário esta deslogado, e o de logout no caso contrário).
+- [X] Um usuário é definido por: nome, email, senha.
+- [ ] Só uma pessoa logada pode acessar QUALQUER página de cadastro, independente se é cadastro de item ou de usuário. (*Observação: a página de cadastro de usuário atualmente é pública.*)
+- [ ] Um usuário deslogado só poderá ver/acessar a página de catálogo. (*Observação: usuários deslogados também podem acessar as páginas de login e cadastro de usuário.*)
+- [X] Na página de cadastro de um item, deve ser feito o upload da imagem (com preview).
+- [X] A página de edição de um item deve ser igual à de cadastro, porém trazendo os valores atuais e um preview da imagem ilustrativa.
+- [X] Ao clicar no botão de remoção de um item, deve ser aberto um pop-up perguntando se o usuário tem certeza desta ação.
+- [X] Ao clicar no botão de adicionar ao carrinho, o item deve ser dinamicamente adicionado ao carrinho.
+- [X] Deve haver internacionalização através da escolha da língua PT ou EN através de um botão no header.
 
-Translations are provided in `public/assets/i18n/en.json` and `public/assets/i18n/pt.json`. The app loads the appropriate JSON at runtime using a translation loader (for example `@ngx-translate/core` with `TranslateHttpLoader`) or a custom service that fetches `/assets/i18n/{lang}.json`.
+## Como Executar o Projeto
 
-Example usage in templates:
-```html
-<h1>{ 'HOME.WELCOME' | translate }</h1>
-<button mat-button>{ 'MOVIE.ADD' | translate }</button>
-```
+(Esta seção pode ser mantida do README original, se aplicável, ou adaptada conforme necessário)
 
-## Prerequisites
+### Pré-requisitos
 
-- Node.js (>= 16 recommended)
-- npm (>= 8) or yarn
-- Angular CLI (optional, for development): `npm install -g @angular/cli`
-- The example backend API (clone and run locally): `https://github.com/Kirink212/api-examples` (see instructions below)
+*   Node.js (versão 16 ou superior)
+*   npm (versão 8 ou superior)
+*   Angular CLI (opcional)
+*   Uma API de backend para fornecer os dados dos filmes. Este frontend foi projetado para funcionar com a API de exemplo `movies-api` disponível em: `https://github.com/Kirink212/api-examples`.
 
-## How to run the project locally
+### Passos
 
-1. Clone this frontend repo or extract the ZIP.
-2. Install dependencies:
-```bash
-npm install
-```
-3. Run the backend API locally:
-```bash
-# clone the API examples (movies-api)
-git clone https://github.com/Kirink212/api-examples.git
-cd api-examples/movies-api
-npm install
-npm run start
-```
-The backend will run on `http://localhost:3000` (confirm the port in the API README or code). The frontend expects the API to be available locally — update `environment.ts` if the API runs on another port.
+1.  **Clone o repositório do backend e inicie a API:**
+    ```bash
+    git clone https://github.com/Kirink212/api-examples.git
+    cd api-examples/movies-api
+    npm install
+    npm run start
+    ```
+    A API estará rodando em `http://localhost:3000`.
 
-4. Run the frontend:
-```bash
-ng serve --open
-```
-Or
-```bash
-npm start
-```
-The app will open at `http://localhost:4200`.
+2.  **Instale as dependências do frontend:**
+    ```bash
+    npm install
+    ```
 
-## Configuration
+3.  **Execute a aplicação frontend:**
+    ```bash
+    npm start
+    ```
+    A aplicação será aberta em `http://localhost:4200`.
 
-- API base URL: configured in `src/environments/environment.ts` as `apiUrl`. Set to `http://localhost:3000` when running locally with the professor's API.
-- i18n files location: `public/assets/i18n/{lang}.json`
+    ### Agradecimentos
 
-## Scripts
-
-- `npm start` — starts the frontend dev server (maps to `ng serve`)
-- `npm run build` — builds the app for production
-- `npm test` — runs unit tests (if configured)
-- `npm run lint` — runs linter (if configured)
-
-## Notes about the backend API
-
-This frontend was built to work with the `movies-api` example provided in the referenced GitHub repository. That API exposes endpoints to list, get, create, update, and delete movies. Adjust `environment.apiUrl` if the API runs on a different host/port.
-
-## Contributing
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature/name`
-3. Commit changes: `git commit -m "feat: description"`
-4. Push and open a Pull Request
-
-## License
-
-MIT
-## O que ainda falta:
-
-- [ ] atualizar quantidade de movies no serve depois da compra
-- [ ] crud completo do user com restrição para edit e delete
-- [X] implementar a tradução
-- [ ] implementar modulo de pagamentos
-- [X] implementar logica para link de add user
-
-Feedback da API
-
-- [ ] as imagens dos poster, quando edit e delete do movie, a imagem recebe novo id e a imagem "descartada" permanece no server
-- [ ] user só tem username, email, password - não tem o role
-- [ ] aula de reposição na terça feira
-
-## Automatic string extraction for i18n
-
-- Detectei e extraí 165 strings do código (templates e arquivos .ts). Elas foram adicionadas em `public/assets/i18n/en.json` e `pt.json` sob a chave `UI`.
-- Algumas traduções em PT são suposições e devem ser revisadas manualmente.
+    formulario de filme para edição de filme

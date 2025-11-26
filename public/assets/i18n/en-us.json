@@ -22,6 +22,7 @@
   "FORM": {
     "ADD_MOVIE_FORM": "Add Movie",
     "EDIT_MOVIE_FORM": "Edit Movie",
+    "ADD_USER": "Add User",
     "USERNAME": "Name",
     "PLACEHOLDER_USERNAME": "Name",
     "EMAIL": "Email",
