@@ -107,7 +107,7 @@ Agradeço profundamente:
 
 ---
 
-Este projeto é o **projeto final do curso de Angular**, desenvolvido com muito carinho, dedicação e café. ☕✨
+Este é o **projeto final do curso de Angular**, desenvolvido com muito carinho, dedicação e café. ☕✨
 
 ---
 <p style="text-align:center">Novenbro de 2025</p>
