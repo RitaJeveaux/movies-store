@@ -25,13 +25,14 @@ npm start
 Endpoints principais:
 
 ```
-GET /movies
-GET /movies/:id
-POST /movies
-PUT /movies/:id
-DELETE /movies/:id
-POST /login
-POST /register
+GET /movies: Retorna uma lista de todos os filmes.
+GET /movies/{id}: Retorna um filme específico pelo seu ID.
+POST /movies: Adiciona um novo filme.
+PUT /movies/{id}: Atualiza um filme existente.
+DELETE /movies/{id}: Deleta um filme.
+POST /upload: Realiza o upload de uma imagem de poster para o filme.
+GET /users Realiza login
+POST /users Adiciona um usuario
 ```
 
 ---
